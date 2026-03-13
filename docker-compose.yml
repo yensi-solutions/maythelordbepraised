@@ -23,45 +23,6 @@ services:
       timeout: 5s
       retries: 5
 
-  keycloak-db:
-    image: postgres:16-alpine
-    ports:
-      - "${KEYCLOAK_DB_PORT:-15786}:5432"
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-change-me}
-    volumes:
-      - keycloak_db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U keycloak"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-  keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    ports:
-      - "${KEYCLOAK_PORT:-15785}:8080"
-    environment:
-      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN:-admin}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-change-me}
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-change-me}
-    command: start-dev --import-realm
-    volumes:
-      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
-    depends_on:
-      keycloak-db:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080;echo -e 'GET /health/ready HTTP/1.1\r\nhost: localhost\r\n\r\n' >&3;timeout 1 cat <&3 | grep -q '200 OK'"]
-      interval: 10s
-      timeout: 5s
-      retries: 15
-
   minio:
     image: minio/minio:latest
     ports:
@@ -92,10 +53,6 @@ services:
       MONGODB_URL: mongodb://mongo:27017
       MONGODB_DB_NAME: ${MONGODB_DB_NAME:-maythelordbepraised}
       REDIS_URL: redis://redis:6379
-      KEYCLOAK_URL: http://keycloak:8080
-      KEYCLOAK_REALM: ${KEYCLOAK_REALM:-mtlbp}
-      KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID:-mtlbp-api}
-      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET:-change-me}
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-sk_test_changeme}
       STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-whsec_changeme}
       MINIO_ENDPOINT: minio:9000
@@ -109,8 +66,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-      keycloak:
-        condition: service_healthy
 
   pastor-portal:
     build:
@@ -123,9 +78,6 @@ services:
       - ./frontend/packages/shared/src:/app/packages/shared/src:delegated
     environment:
       VITE_API_URL: http://localhost:${BACKEND_PORT:-15782}/api/v1
-      VITE_KEYCLOAK_URL: http://localhost:${KEYCLOAK_PORT:-15785}
-      VITE_KEYCLOAK_REALM: ${KEYCLOAK_REALM:-mtlbp}
-      VITE_KEYCLOAK_CLIENT_ID: mtlbp-pastor-portal
     depends_on:
       - backend
 
@@ -140,14 +92,10 @@ services:
       - ./frontend/packages/shared/src:/app/packages/shared/src:delegated
     environment:
       VITE_API_URL: http://localhost:${BACKEND_PORT:-15782}/api/v1
-      VITE_KEYCLOAK_URL: http://localhost:${KEYCLOAK_PORT:-15785}
-      VITE_KEYCLOAK_REALM: ${KEYCLOAK_REALM:-mtlbp}
-      VITE_KEYCLOAK_CLIENT_ID: mtlbp-follower-portal
     depends_on:
       - backend
 
 volumes:
   mongo_data:
   redis_data:
-  keycloak_db_data:
   minio_data:
