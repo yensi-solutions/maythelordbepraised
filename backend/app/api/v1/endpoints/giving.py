@@ -1,11 +1,12 @@
 import stripe
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from app.api.deps import get_database, get_current_user
-from app.schemas.user import CurrentUser
-from app.schemas.giving import CreateCheckoutRequest, CheckoutResponse, DonationResponse
-from app.services.giving_service import GivingService
+
+from app.api.deps import get_current_user, get_database
 from app.config import settings
+from app.schemas.giving import CheckoutResponse, CreateCheckoutRequest, DonationResponse
+from app.schemas.user import CurrentUser
+from app.services.giving_service import GivingService
 
 router = APIRouter()
 
@@ -22,7 +23,11 @@ def _donation_response(d: dict) -> DonationResponse:
         type=d.get("type", "general"),
         pastor_id=str(d["pastor_id"]) if d.get("pastor_id") else None,
         stripe_payment_id=d.get("stripe_payment_id"),
-        created_at=d["created_at"].isoformat() if hasattr(d["created_at"], "isoformat") else str(d["created_at"]),
+        created_at=(
+            d["created_at"].isoformat()
+            if hasattr(d["created_at"], "isoformat")
+            else str(d["created_at"])
+        ),
     )
 
 

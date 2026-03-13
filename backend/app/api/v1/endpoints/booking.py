@@ -1,16 +1,23 @@
+from bson import ObjectId
 from fastapi import APIRouter, Depends, HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from bson import ObjectId
-from app.api.deps import get_database, get_current_user, require_role
+
+from app.api.deps import get_current_user, get_database, require_role
 from app.models.user import UserRole
-from app.schemas.user import CurrentUser
 from app.schemas.booking import (
-    CreateServiceRequest, ServiceResponse,
-    SetAvailabilityRequest, AvailabilityResponse,
-    CreateBookingRequest, BookingResponse, UpdateBookingStatusRequest,
+    AvailabilityResponse,
+    BookingResponse,
+    CreateBookingRequest,
+    CreateServiceRequest,
+    ServiceResponse,
+    SetAvailabilityRequest,
+    UpdateBookingStatusRequest,
 )
+from app.schemas.user import CurrentUser
 from app.services.booking_service import (
-    ServiceDefinitionService, AvailabilityService, BookingService,
+    AvailabilityService,
+    BookingService,
+    ServiceDefinitionService,
 )
 
 router = APIRouter()

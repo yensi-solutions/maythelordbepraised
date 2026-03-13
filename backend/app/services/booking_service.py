@@ -1,8 +1,10 @@
-from app.services.base import BaseService
-from app.models.base import utcnow
-from bson import ObjectId
 from datetime import date as date_type
+
+from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorDatabase
+
+from app.models.base import utcnow
+from app.services.base import BaseService
 
 
 class ServiceDefinitionService(BaseService):
@@ -56,7 +58,8 @@ class AvailabilityService(BaseService):
         return await cursor.to_list(length=100)
 
     async def check_available(
-        self, db: "AsyncIOMotorDatabase", pastor_id: str, date: str, start_time: str, duration_minutes: int
+        self, db: "AsyncIOMotorDatabase", pastor_id: str,
+        date: str, start_time: str, duration_minutes: int,
     ) -> bool:
         booking_date = date_type.fromisoformat(date)
         day_name = booking_date.strftime("%A").lower()

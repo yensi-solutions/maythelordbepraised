@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 from motor.motor_asyncio import AsyncIOMotorDatabase
+
 from app.api.deps import get_database
 
 router = APIRouter(tags=["health"])

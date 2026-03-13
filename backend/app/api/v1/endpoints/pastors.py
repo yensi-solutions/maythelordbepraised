@@ -1,10 +1,11 @@
+
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from typing import Annotated
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from app.api.deps import get_database, get_current_user, require_role
+
+from app.api.deps import get_database, require_role
 from app.models.user import UserRole
+from app.schemas.pastor import PastorListResponse, PastorProfileResponse, PastorProfileUpdate
 from app.schemas.user import CurrentUser
-from app.schemas.pastor import PastorProfileUpdate, PastorProfileResponse, PastorListResponse
 from app.services.pastor_service import PastorService
 
 router = APIRouter()

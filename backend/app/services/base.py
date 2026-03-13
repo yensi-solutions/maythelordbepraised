@@ -1,6 +1,7 @@
-from typing import TypeVar, Generic, Any
-from motor.motor_asyncio import AsyncIOMotorCollection
+from typing import Generic, TypeVar
+
 from bson import ObjectId
+from motor.motor_asyncio import AsyncIOMotorCollection
 
 T = TypeVar("T")
 
@@ -12,7 +13,9 @@ class BaseService(Generic[T]):
     async def get_by_id(self, id: str) -> dict | None:
         return await self.collection.find_one({"_id": ObjectId(id)})
 
-    async def get_all(self, skip: int = 0, limit: int = 100, query: dict | None = None) -> list[dict]:
+    async def get_all(
+        self, skip: int = 0, limit: int = 100, query: dict | None = None,
+    ) -> list[dict]:
         q = query or {}
         cursor = self.collection.find(q).skip(skip).limit(limit)
         return await cursor.to_list(length=limit)

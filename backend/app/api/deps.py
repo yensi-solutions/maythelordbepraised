@@ -1,9 +1,11 @@
 from typing import Annotated
+
 from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from app.db.mongodb import get_db
+
 from app.core.security import verify_token
+from app.db.mongodb import get_db
 from app.models.user import UserRole
 from app.schemas.user import CurrentUser
 

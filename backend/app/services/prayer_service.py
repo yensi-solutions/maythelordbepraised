@@ -1,13 +1,18 @@
-from app.services.base import BaseService
-from app.models.base import utcnow
-from pymongo import ReturnDocument
 from bson import ObjectId
+from pymongo import ReturnDocument
+
+from app.models.base import utcnow
+from app.services.base import BaseService
 
 
 class PrayerService(BaseService):
     async def create_prayer(self, author_id: str | None, data: dict) -> dict:
         doc = {
-            "author_id": ObjectId(author_id) if author_id and not data.get("is_anonymous") else None,
+            "author_id": (
+                ObjectId(author_id)
+                if author_id and not data.get("is_anonymous")
+                else None
+            ),
             "is_anonymous": data.get("is_anonymous", False),
             "text": data["text"],
             "status": "active",
@@ -22,7 +27,9 @@ class PrayerService(BaseService):
         doc["_id"] = result.inserted_id
         return doc
 
-    async def get_prayers(self, status: str | None = None, skip: int = 0, limit: int = 20) -> list[dict]:
+    async def get_prayers(
+        self, status: str | None = None, skip: int = 0, limit: int = 20,
+    ) -> list[dict]:
         query = {}
         if status:
             query["status"] = status

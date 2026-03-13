@@ -1,11 +1,13 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from app.config import settings
+
 from app.api.middleware import setup_middleware
 from app.api.v1.router import api_router
-from app.db.mongodb import connect_db, close_db
-from app.db.indexes import create_indexes
+from app.config import settings
 from app.core.logging import setup_logging
+from app.db.indexes import create_indexes
+from app.db.mongodb import close_db, connect_db
 
 logger = setup_logging(settings.environment)
 

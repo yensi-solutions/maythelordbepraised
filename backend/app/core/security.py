@@ -1,5 +1,6 @@
 import httpx
-from jose import jwt, JWTError
+from jose import JWTError, jwt
+
 from app.config import settings
 
 _jwks_cache: dict | None = None
@@ -8,7 +9,9 @@ _jwks_cache: dict | None = None
 async def get_keycloak_public_key() -> dict:
     global _jwks_cache
     if _jwks_cache is None:
-        url = f"{settings.keycloak_url}/realms/{settings.keycloak_realm}/protocol/openid-connect/certs"
+        base = settings.keycloak_url
+        realm = settings.keycloak_realm
+        url = f"{base}/realms/{realm}/protocol/openid-connect/certs"
         async with httpx.AsyncClient() as client:
             response = await client.get(url)
             response.raise_for_status()

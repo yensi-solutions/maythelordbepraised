@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from app.api.deps import get_database, get_current_user
-from app.schemas.user import RegisterRequest, RegisterResponse, UserProfileResponse, CurrentUser
+
+from app.api.deps import get_current_user, get_database
+from app.schemas.user import CurrentUser, RegisterRequest, RegisterResponse, UserProfileResponse
 from app.services.auth_service import AuthService
 
 router = APIRouter()
