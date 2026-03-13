@@ -1,3 +1,5 @@
+import { WaitlistForm } from '@mtlbp/shared';
+
 export function CTASection() {
   return (
     <section className="py-20 bg-brown-dark text-cream">
@@ -6,9 +8,13 @@ export function CTASection() {
         <p className="font-sans text-earth-light max-w-xl mx-auto mb-8">
           Join pastors who are using MayTheLordBePraised to serve their communities more effectively.
         </p>
-        <a href="/register" className="px-8 py-4 bg-earth text-brown-dark rounded-xl font-sans font-semibold text-lg hover:bg-earth-light transition-colors shadow-lg inline-block">
-          Get Started — It's Free
-        </a>
+        <div className="flex justify-center">
+          <WaitlistForm
+            source="pastor-portal"
+            inputClass="flex-1 px-4 py-3 rounded-xl border-2 border-earth font-sans text-brown-dark placeholder-brown-light focus:border-earth-light focus:outline-none min-w-0"
+            buttonClass="px-6 py-3 bg-earth text-brown-dark rounded-xl font-sans font-semibold hover:bg-earth-light transition-colors shadow-lg whitespace-nowrap"
+          />
+        </div>
       </div>
     </section>
   );

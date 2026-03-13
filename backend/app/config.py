@@ -32,6 +32,10 @@ class Settings(BaseSettings):
     minio_secret_key: str = "minioadmin"
     minio_bucket: str = "mtlbp-uploads"
 
+    # Admin
+    admin_username: str = "admin"
+    admin_password: str = "change-me-in-production"
+
     # Frontend URLs (for CORS)
     pastor_portal_url: str = "http://localhost:15780"
     follower_portal_url: str = "http://localhost:15781"

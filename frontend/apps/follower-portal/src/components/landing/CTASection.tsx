@@ -1,3 +1,5 @@
+import { WaitlistForm } from '@mtlbp/shared';
+
 export function CTASection() {
   return (
     <section className="py-20 bg-cream">
@@ -8,9 +10,9 @@ export function CTASection() {
         <p className="font-sans text-brown-medium max-w-xl mx-auto mb-8">
           Join thousands of believers connecting with their pastors and growing in faith together.
         </p>
-        <a href="/register" className="px-8 py-4 bg-brown-dark text-cream rounded-xl font-sans font-semibold text-lg hover:bg-brown-medium transition-colors shadow-lg inline-block">
-          Create Your Free Account
-        </a>
+        <div className="flex justify-center">
+          <WaitlistForm source="follower-portal" />
+        </div>
       </div>
     </section>
   );

@@ -7,4 +7,5 @@ export { Modal } from './components/Modal';
 export { Avatar } from './components/Avatar';
 export { Tag } from './components/Tag';
 export { Footer } from './components/Footer';
+export { WaitlistForm } from './components/WaitlistForm';
 export type { User, PastorProfile, Service, Booking, Prayer, Donation, AvailabilitySlot } from './types';

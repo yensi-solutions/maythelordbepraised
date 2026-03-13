@@ -1,3 +1,5 @@
+import { WaitlistForm } from '@mtlbp/shared';
+
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center bg-cream pt-16">
@@ -11,15 +13,8 @@ export function HeroSection() {
           <p className="font-sans text-lg text-brown-medium mb-8 max-w-lg">
             The all-in-one platform to manage bookings, counsel your flock, track prayer requests, and receive donations — so you can focus on what matters most.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a href="/register" className="px-8 py-4 bg-brown-dark text-cream rounded-xl font-sans font-semibold text-lg hover:bg-brown-medium transition-colors shadow-lg text-center">
-              Start Free Today
-            </a>
-            <a href="#features" className="px-8 py-4 border-2 border-brown-dark text-brown-dark rounded-xl font-sans font-semibold text-lg hover:bg-sand transition-colors text-center">
-              See Features
-            </a>
-          </div>
-          <p className="font-sans text-brown-light text-sm mt-4">No credit card required. Free tier available forever.</p>
+          <WaitlistForm source="pastor-portal" />
+          <p className="font-sans text-brown-light text-sm mt-4">Join the waitlist — launching soon.</p>
         </div>
         <div className="hidden lg:block">
           <div className="bg-white rounded-2xl shadow-xl border border-sand-dark p-6">

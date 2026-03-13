@@ -6,12 +6,14 @@ import { ProfilePage } from './pages/ProfilePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { BookingsPage } from './pages/BookingsPage';
 import { PrayersPage } from './pages/PrayersPage';
+import { WaitlistAdminPage } from './pages/WaitlistAdminPage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/admin/waitlist" element={<WaitlistAdminPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/dashboard/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path="/dashboard/services" element={<ProtectedRoute><ServicesPage /></ProtectedRoute>} />
