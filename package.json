@@ -1,0 +1,29 @@
+{
+  "name": "maythelordbepraised",
+  "version": "1.0.0",
+  "description": "A multi-pastor ministry services platform with two distinct portals sharing a single API and database. Pastors manage and deliver services through the main domain; followers discover, book, and engage through a subdomain.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yensi-solutions/maythelordbepraised.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yensi-solutions/maythelordbepraised/issues"
+  },
+  "homepage": "https://github.com/yensi-solutions/maythelordbepraised#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "mongodb": "^7.1.0",
+    "playwright": "^1.58.2"
+  }
+}
