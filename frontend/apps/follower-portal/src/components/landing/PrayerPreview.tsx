@@ -30,7 +30,9 @@ export function PrayerPreview() {
               Join the Prayer Wall
             </a>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-sand-dark space-y-4">
+          <div className="space-y-4">
+            <img src="/images/prayer-hands.png" alt="Hands clasped in prayer" className="w-full h-48 object-cover rounded-xl" />
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-sand-dark space-y-4">
             {[
               { text: 'Please pray for my mother\'s recovery from surgery.', count: 24, anonymous: false, name: 'Maria S.' },
               { text: 'Seeking guidance in a career transition. Need wisdom.', count: 18, anonymous: true, name: null },
@@ -44,6 +46,7 @@ export function PrayerPreview() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </div>

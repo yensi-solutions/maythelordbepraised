@@ -2,6 +2,7 @@ export function GivingSection() {
   return (
     <section id="give" className="py-20 bg-brown-dark text-cream">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <img src="/images/giving-offering.png" alt="Offering plate on wooden pew" className="w-full h-48 object-cover rounded-xl mb-10 opacity-60" />
         <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">Support Your Ministry</h2>
         <p className="font-sans text-earth-light max-w-2xl mx-auto mb-10">
           Your generosity makes a difference. Give tithes, offerings, and donations securely to support your pastor and church community.

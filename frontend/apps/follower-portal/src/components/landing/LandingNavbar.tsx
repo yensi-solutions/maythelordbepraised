@@ -7,7 +7,8 @@ export function LandingNavbar() {
     <nav className="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-sand-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="/" className="font-serif text-xl font-bold text-brown-dark">
+          <a href="/" className="flex items-center gap-2 font-serif text-xl font-bold text-brown-dark">
+            <img src="/images/logo-icon.png" alt="" className="w-8 h-8" />
             MayTheLordBePraised
           </a>
 
