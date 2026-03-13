@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json package-lock.json* ./
+COPY packages/shared/package.json packages/shared/
+COPY apps/follower-portal/package.json apps/follower-portal/
+RUN npm install
+COPY packages/shared/ packages/shared/
+COPY apps/follower-portal/ apps/follower-portal/
+EXPOSE 15781
+CMD ["npm", "run", "dev:follower", "--", "--host", "0.0.0.0"]

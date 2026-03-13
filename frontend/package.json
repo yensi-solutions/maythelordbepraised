@@ -1,0 +1,17 @@
+{
+  "name": "mtlbp-frontend",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:pastor": "npm run dev -w @mtlbp/pastor-portal",
+    "dev:follower": "npm run dev -w @mtlbp/follower-portal",
+    "build:all": "npm run build -w @mtlbp/shared && npm run build -w @mtlbp/pastor-portal && npm run build -w @mtlbp/follower-portal",
+    "lint": "npm run lint -ws --if-present",
+    "typecheck": "npm run typecheck -ws --if-present",
+    "test:unit": "npm run test:unit -ws --if-present",
+    "test:e2e": "npm run test:e2e -ws --if-present"
+  }
+}

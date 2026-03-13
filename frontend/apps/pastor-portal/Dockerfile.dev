@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json package-lock.json* ./
+COPY packages/shared/package.json packages/shared/
+COPY apps/pastor-portal/package.json apps/pastor-portal/
+RUN npm install
+COPY packages/shared/ packages/shared/
+COPY apps/pastor-portal/ apps/pastor-portal/
+EXPOSE 15780
+CMD ["npm", "run", "dev:pastor", "--", "--host", "0.0.0.0"]
