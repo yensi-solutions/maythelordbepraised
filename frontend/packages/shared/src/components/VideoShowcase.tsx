@@ -8,6 +8,11 @@ export function VideoShowcase({ variant = 'pastor' }: VideoShowcaseProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Hide during video recording to avoid inception effect
+  if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('novideo')) {
+    return null;
+  }
+
   const handlePlay = () => {
     if (videoRef.current) {
       videoRef.current.play();
