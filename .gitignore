@@ -14,3 +14,4 @@ playwright-report/
 test-results/
 .mypy_cache/
 .ruff_cache/
+e2e/results/

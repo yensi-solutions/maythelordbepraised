@@ -6,7 +6,7 @@ import { ServicesPreview } from '../components/landing/ServicesPreview';
 import { PrayerPreview } from '../components/landing/PrayerPreview';
 import { GivingSection } from '../components/landing/GivingSection';
 import { CTASection } from '../components/landing/CTASection';
-import { Footer } from '@mtlbp/shared';
+import { Footer, VideoShowcase } from '@mtlbp/shared';
 
 export function LandingPage() {
   return (
@@ -14,6 +14,7 @@ export function LandingPage() {
       <LandingNavbar />
       <HeroSection />
       <HowItWorks />
+      <VideoShowcase variant="follower" />
       <FeaturedPastors />
       <ServicesPreview />
       <PrayerPreview />

@@ -19,5 +19,18 @@ export default defineConfig({
         launchOptions: { slowMo: 300 },
       },
     },
+    {
+      name: "showcase",
+      testMatch: "showcase.spec.ts",
+      use: {
+        browserName: "chromium",
+        viewport: { width: 1440, height: 900 },
+        video: {
+          mode: "on",
+          size: { width: 1440, height: 900 },
+        },
+        launchOptions: { slowMo: 150 },
+      },
+    },
   ],
 });

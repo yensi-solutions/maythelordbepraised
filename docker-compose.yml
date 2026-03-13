@@ -75,6 +75,7 @@ services:
       - "${PASTOR_PORTAL_PORT:-15780}:${PASTOR_PORTAL_PORT:-15780}"
     volumes:
       - ./frontend/apps/pastor-portal/src:/app/apps/pastor-portal/src:delegated
+      - ./frontend/apps/pastor-portal/public:/app/apps/pastor-portal/public:delegated
       - ./frontend/packages/shared/src:/app/packages/shared/src:delegated
     environment:
       VITE_API_URL: http://localhost:${BACKEND_PORT:-15782}/api/v1
@@ -89,6 +90,7 @@ services:
       - "${FOLLOWER_PORTAL_PORT:-15781}:${FOLLOWER_PORTAL_PORT:-15781}"
     volumes:
       - ./frontend/apps/follower-portal/src:/app/apps/follower-portal/src:delegated
+      - ./frontend/apps/follower-portal/public:/app/apps/follower-portal/public:delegated
       - ./frontend/packages/shared/src:/app/packages/shared/src:delegated
     environment:
       VITE_API_URL: http://localhost:${BACKEND_PORT:-15782}/api/v1
