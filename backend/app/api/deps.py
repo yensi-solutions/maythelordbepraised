@@ -4,12 +4,19 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
+from app.config import settings
 from app.core.security import verify_token
 from app.db.mongodb import get_db
 from app.models.user import UserRole
 from app.schemas.user import CurrentUser
 
 security = HTTPBearer()
+
+# Dev-mode token prefixes for bypassing Keycloak auth
+_DEV_TOKEN_MAP = {
+    "dev-pastor-token": ("demo-pastor-1", "pastor.grace@example.com", UserRole.pastor),
+    "dev-follower-token": ("demo-follower-1", "mary.johnson@example.com", UserRole.follower),
+}
 
 
 async def get_database() -> AsyncIOMotorDatabase:
@@ -21,6 +28,19 @@ async def get_current_user(
     db: Annotated[AsyncIOMotorDatabase, Depends(get_database)],
 ) -> CurrentUser:
     token = credentials.credentials
+
+    # DEV MODE: bypass Keycloak with special dev tokens
+    if settings.environment == "development" and token in _DEV_TOKEN_MAP:
+        keycloak_id, email, role = _DEV_TOKEN_MAP[token]
+        user_doc = await db.users.find_one({"keycloak_id": keycloak_id})
+        user_id = str(user_doc["_id"]) if user_doc else None
+        return CurrentUser(
+            keycloak_id=keycloak_id,
+            email=email,
+            role=role,
+            user_id=user_id,
+        )
+
     payload = await verify_token(token)
     if not payload:
         raise HTTPException(

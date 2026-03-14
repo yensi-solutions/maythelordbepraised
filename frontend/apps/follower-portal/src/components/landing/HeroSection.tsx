@@ -2,7 +2,7 @@ import { WaitlistForm } from '@mtlbp/shared';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16">
+    <section id="waitlist" className="relative min-h-screen flex items-center justify-center pt-16">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/hero-follower.png')" }} />
       <div className="absolute inset-0 bg-cream/85" />
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

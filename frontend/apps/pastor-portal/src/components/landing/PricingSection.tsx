@@ -51,7 +51,7 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <a href="/register" className={`block w-full py-3 rounded-lg font-sans font-semibold text-center transition-colors ${tier.highlighted ? 'bg-earth text-brown-dark hover:bg-earth-light' : 'bg-brown-dark text-cream hover:bg-brown-medium'}`}>
+              <a href="#waitlist" className={`block w-full py-3 rounded-lg font-sans font-semibold text-center transition-colors ${tier.highlighted ? 'bg-earth text-brown-dark hover:bg-earth-light' : 'bg-brown-dark text-cream hover:bg-brown-medium'}`}>
                 {tier.cta}
               </a>
             </div>

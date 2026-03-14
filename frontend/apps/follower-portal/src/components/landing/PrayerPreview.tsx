@@ -26,8 +26,8 @@ export function PrayerPreview() {
                 <span>Share testimonies of answered prayers</span>
               </li>
             </ul>
-            <a href="/register" className="inline-block mt-8 px-6 py-3 bg-brown-dark text-cream rounded-lg font-sans font-medium hover:bg-brown-medium transition-colors">
-              Join the Prayer Wall
+            <a href="#waitlist" className="inline-block mt-8 px-6 py-3 bg-brown-dark text-cream rounded-lg font-sans font-medium hover:bg-brown-medium transition-colors">
+              Join the Waitlist
             </a>
           </div>
           <div className="space-y-4">

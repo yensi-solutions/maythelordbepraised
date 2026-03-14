@@ -27,7 +27,10 @@ api.interceptors.response.use(
   async (error: AxiosError) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('access_token');
-      window.location.href = '/login';
+      // Don't redirect in dev mode — pages handle auth state gracefully
+      if (import.meta.env.PROD) {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   },

@@ -32,5 +32,29 @@ export default defineConfig({
         launchOptions: { slowMo: 150 },
       },
     },
+    {
+      name: "showcase-internal",
+      testMatch: "showcase-internal.spec.ts",
+      use: {
+        browserName: "chromium",
+        viewport: { width: 1440, height: 900 },
+        video: {
+          mode: "on",
+          size: { width: 1440, height: 900 },
+        },
+        launchOptions: { slowMo: 100 },
+      },
+    },
+    {
+      name: "pdf-screenshots",
+      testMatch: "pdf-screenshots.spec.ts",
+      use: {
+        browserName: "chromium",
+        viewport: { width: 1440, height: 900 },
+        video: "off",
+        screenshot: "off",
+        trace: "off",
+      },
+    },
   ],
 });

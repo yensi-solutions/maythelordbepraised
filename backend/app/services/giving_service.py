@@ -58,3 +58,7 @@ class GivingService(BaseService):
     async def get_giving_history(self, donor_id: str) -> list[dict]:
         cursor = self.collection.find({"donor_id": ObjectId(donor_id)}).sort("created_at", -1)
         return await cursor.to_list(length=100)
+
+    async def get_received_donations(self, pastor_id: str) -> list[dict]:
+        cursor = self.collection.find({"pastor_id": ObjectId(pastor_id)}).sort("created_at", -1)
+        return await cursor.to_list(length=100)

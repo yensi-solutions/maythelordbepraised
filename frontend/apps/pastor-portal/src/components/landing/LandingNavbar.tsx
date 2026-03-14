@@ -15,11 +15,8 @@ export function LandingNavbar() {
             <a href="#features" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Features</a>
             <a href="#pricing" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Pricing</a>
             <a href="#testimonials" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Testimonials</a>
-            <a href="/login" className="px-4 py-2 border-2 border-brown-dark text-brown-dark rounded-lg font-sans text-sm hover:bg-sand transition-colors">
-              Sign In
-            </a>
-            <a href="/register" className="px-4 py-2 bg-brown-dark text-cream rounded-lg font-sans text-sm hover:bg-brown-medium transition-colors">
-              Get Started
+            <a href="#waitlist" className="px-4 py-2 bg-brown-dark text-cream rounded-lg font-sans text-sm hover:bg-brown-medium transition-colors">
+              Join the Waitlist
             </a>
           </div>
           <button className="md:hidden text-brown-dark" onClick={() => setIsOpen(!isOpen)}>
@@ -37,8 +34,7 @@ export function LandingNavbar() {
             <a href="#features" className="block py-2 text-brown-medium font-sans text-sm">Features</a>
             <a href="#pricing" className="block py-2 text-brown-medium font-sans text-sm">Pricing</a>
             <a href="#testimonials" className="block py-2 text-brown-medium font-sans text-sm">Testimonials</a>
-            <a href="/login" className="block py-2 text-brown-medium font-sans text-sm">Sign In</a>
-            <a href="/register" className="block py-2 px-4 bg-brown-dark text-cream rounded-lg font-sans text-sm text-center">Get Started</a>
+            <a href="#waitlist" className="block py-2 px-4 bg-brown-dark text-cream rounded-lg font-sans text-sm text-center">Join the Waitlist</a>
           </div>
         )}
       </div>

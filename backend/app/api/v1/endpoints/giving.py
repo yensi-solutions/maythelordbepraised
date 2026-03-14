@@ -85,3 +85,12 @@ async def my_giving(
 ):
     donations = await service.get_giving_history(user.user_id)
     return [_donation_response(d) for d in donations]
+
+
+@router.get("/received", response_model=list[DonationResponse])
+async def received_donations(
+    user: CurrentUser = Depends(get_current_user),
+    service: GivingService = Depends(get_giving_service),
+):
+    donations = await service.get_received_donations(user.user_id)
+    return [_donation_response(d) for d in donations]

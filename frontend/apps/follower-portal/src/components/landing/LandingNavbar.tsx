@@ -18,8 +18,8 @@ export function LandingNavbar() {
             <a href="#services" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Services</a>
             <a href="#prayer" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Prayer Wall</a>
             <a href="#give" className="text-brown-medium hover:text-brown-dark font-sans text-sm">Give</a>
-            <a href="/login" className="px-4 py-2 bg-brown-dark text-cream rounded-lg font-sans text-sm hover:bg-brown-medium transition-colors">
-              Sign In
+            <a href="#waitlist" className="px-4 py-2 bg-brown-dark text-cream rounded-lg font-sans text-sm hover:bg-brown-medium transition-colors">
+              Join the Waitlist
             </a>
           </div>
 
@@ -42,7 +42,7 @@ export function LandingNavbar() {
             <a href="#services" className="block py-2 text-brown-medium font-sans text-sm">Services</a>
             <a href="#prayer" className="block py-2 text-brown-medium font-sans text-sm">Prayer Wall</a>
             <a href="#give" className="block py-2 text-brown-medium font-sans text-sm">Give</a>
-            <a href="/login" className="block py-2 px-4 bg-brown-dark text-cream rounded-lg font-sans text-sm text-center">Sign In</a>
+            <a href="#waitlist" className="block py-2 px-4 bg-brown-dark text-cream rounded-lg font-sans text-sm text-center">Join the Waitlist</a>
           </div>
         )}
       </div>

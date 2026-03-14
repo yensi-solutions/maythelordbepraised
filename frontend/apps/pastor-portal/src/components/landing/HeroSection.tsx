@@ -2,7 +2,7 @@ import { WaitlistForm } from '@mtlbp/shared';
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center bg-cream pt-16">
+    <section id="waitlist" className="min-h-screen flex items-center bg-cream pt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
         <div>
           <p className="font-sans text-earth font-semibold mb-4 uppercase tracking-wide text-sm">For Pastors & Ministry Leaders</p>

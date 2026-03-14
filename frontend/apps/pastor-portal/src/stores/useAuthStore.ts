@@ -3,6 +3,8 @@ import { devtools } from 'zustand/middleware';
 import { api } from '@mtlbp/shared';
 import type { User } from '@mtlbp/shared';
 
+const DEV_TOKEN = 'dev-pastor-token';
+
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
@@ -40,8 +42,12 @@ export const useAuthStore = create<AuthState>()(
       },
 
       fetchMe: async () => {
-        const token = localStorage.getItem('access_token');
-        if (!token) return;
+        // DEV MODE: auto-login with dev token
+        let token = localStorage.getItem('access_token');
+        if (!token) {
+          token = DEV_TOKEN;
+          localStorage.setItem('access_token', token);
+        }
         set({ isLoading: true });
         try {
           const response = await api.get<User>('/auth/me');

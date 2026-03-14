@@ -19,8 +19,8 @@ export function GivingSection() {
             </button>
           ))}
         </div>
-        <a href="/register" className="px-8 py-4 bg-earth text-brown-dark rounded-xl font-sans font-semibold text-lg hover:bg-earth-light transition-colors inline-block">
-          Give Now
+        <a href="#waitlist" className="px-8 py-4 bg-earth text-brown-dark rounded-xl font-sans font-semibold text-lg hover:bg-earth-light transition-colors inline-block">
+          Join the Waitlist
         </a>
       </div>
     </section>
